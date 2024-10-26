@@ -182,7 +182,7 @@ function getRandomMessage() {
         "luh_neeks don't forget to turn off ur stream at the end",
         "yoooo, what’s ur all-time favorite video game?",
         "u gotta stream urself cooking next time.",
-        "Y’all ever just stay in bed the whole day? lowkey just wasted a whole ass day lmao",
+        "lowkey just wasted a whole ass day lmao",
         "what's ur ETA what's ur ETA?",
         "luh_neeks ask for their insta bruh",
         "bros got an anime tat lol",
@@ -252,7 +252,6 @@ function getRandomMessage() {
         "go talk to that person"
     ];
     
-    
     return messages[Math.floor(Math.random() * messages.length)];
 }
 
@@ -262,7 +261,9 @@ function addMessage(username, message, isBroadcaster = false) {
         ? '#ff4d4d' 
         : `hsl(${Math.floor(Math.random() * 360)}, 70%, 50%)`;
 
-    const newMessage = generateMessage(username, message, userColor, isBroadcaster);
+    const highlightedMessage = highlightName(message, "luh_neeks");
+
+    const newMessage = generateMessage(username, highlightedMessage, userColor, isBroadcaster);
     $chat.append(newMessage);
     $chat.scrollTop($chat[0].scrollHeight);
 
@@ -284,9 +285,15 @@ function generateMessage(username, message, userColor, isBroadcaster) {
             ${badge}
             <div class="message-wrapper">
                 <span class="username" style="color: ${userColor};">${username}:</span>
-                <span class="message">${DOMPurify.sanitize(message)}</span>
+                <span class="message">${message}</span>
             </div>
         </div>`;
+}
+
+// Highlight the specified username in the message
+function highlightName(message, name) {
+    const regex = new RegExp(`\\b(${name})\\b`, "gi");
+    return message.replace(regex, `<span class="highlight">$1</span>`);
 }
 
 // Handle sending user messages from input
