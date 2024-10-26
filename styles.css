@@ -3,7 +3,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: Arial, sans-serif;
+    font-family: 'Arial', sans-serif;
 }
 
 /* Wrapper Styling */
@@ -29,6 +29,33 @@
     text-align: center;
     font-weight: bold;
     font-size: 1.5rem;
+    position: relative;
+}
+
+/* Red Number Container */
+#numberContainer {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+/* Red Dot Styling */
+.red-dot {
+    width: 8px;
+    height: 8px;
+    background-color: red;
+    border-radius: 50%;
+}
+
+/* Red Number Styling */
+#dynamicNumber {
+    font-size: 1.2rem;
+    font-weight: 800;
+    color: red;
+    font-family: 'Arial', sans-serif;
 }
 
 /* Chat Messages Container */
@@ -46,8 +73,10 @@
 .chat-message {
     display: flex;
     align-items: flex-start;
-    margin-bottom: 5px;
-    gap: 6px; /* Space between badge and message content */
+    margin-bottom: 8px;
+    gap: 6px;
+    max-width: 100%;
+    flex-wrap: nowrap;
 }
 
 /* Badge Styling */
@@ -61,9 +90,10 @@
 
 /* Username and Message Wrapper */
 .message-wrapper {
-    display: flex;
+    display: inline-flex;
+    align-items: baseline;
     flex-wrap: wrap;
-    align-items: center;
+    max-width: 100%;
 }
 
 /* Username Styling */
@@ -74,12 +104,23 @@
     color: #f39c12;
 }
 
+/* Ensure broadcaster's username is red */
+.username.broadcaster {
+    color: #ff4d4d;
+}
+
 /* Message Styling */
 .message {
-    display: inline;
+    flex: 1;
+    word-wrap: break-word;
+    white-space: normal;
     color: white;
-    word-wrap: break-word; /* Ensure long words wrap properly */
-    max-width: 100%; /* Ensure it doesn't overflow the container */
+    max-width: calc(100% - 50px);
+}
+
+/* Handle Wrapped Lines Properly */
+.message-wrapper .message + .message {
+    margin-left: calc(8px + 1em);
 }
 
 /* Highlighted Username Styling */
