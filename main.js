@@ -1,7 +1,49 @@
 const usernames = [
     "minealldayfogold", "lewis262", "KJEXTREME", "ItzJonathanMC", "Slider_Cr7", 
     "CommanderDarkos", "SuperNova1128", "adalia2", "AtzengLionshare", "redbulljohnny", 
-    "IceAspect", "JuicyPussy101", "yoler007", "Maka_X_Soul95", "Bee_Cool"
+    "IceAspect", "JuicyPussy101", "yoler007", "Maka_X_Soul95", "Bee_Cool", 
+    "PixiePink551", "thedestroyR01", "littlecrabby", "EyeZ_iLy", "Oceanview24", 
+    "ZoM_MockingBird", "maxdaddy522", "AslakOL", "vegasghost", "Mackula", 
+    "DJCower", "CookieJamz", "FFspiderman", "Queejon", "jacobsolomonbeck", 
+    "Bendik01", "cadoyan", "hTFree", "flipmon4", "theruff", 
+    "Metriod1995", "flashar", "Hajile16", "xabidemi", "Luwi20", 
+    "xDarkFire89", "mikal12345678910", "sharkbark", "Bumpy24", "Iron_Justice", 
+    "1011butter", "LazarusTheGreat", "Aden27", "schriss", "staples4343", 
+    "RogerFoda456", "avariani", "spagetti6", "Jon45Gaming", "Kyrail", 
+    "randomperson86", "kandy311", "tylerting", "thor2543", "Furis0n", 
+    "pique3245", "Koyote99", "CrazyCrafterN", "zombie_stampy", "vulezvu", 
+    "SparkleDJ", "broskihall", "dracula756", "2dino", "BesteKatze_543", 
+    "dunkacheno", "vSTheProdigY", "pelican03", "razor521", "Htx_Edit", 
+    "Pshizzle49", "BeccaBA", "ADGPanda03", "superstar947", "KoningGahoul", 
+    "ArthurBRBR", "berny7701", "Dodge2003", "xToXicGalaXyPvPx", "5nagol", 
+    "crazy_hamsters3", "btezell", "zerothehero8088", "steentje321", "richard10777", 
+    "Lucero29", "SharpShooters123", "LiamTheJ", "SnippZZ_RangE", "Bengerd", 
+    "claudiachristina", "DubKicker", "Munnzie_12", "seenawarrior", "DarthCreeper864", 
+    "DazemaCat", "awealbieenander", "tjjellypod", "ianwithanE101", "FieldPath777", 
+    "tybaker", "Danny24kb", "TomEvans8", "BloxzVforce1", "hugo070707", 
+    "NLlopro", "Zackattack1018", "Vinne720", "Lil_Miss_Mandy", "Crztoolz", 
+    "codeman524", "JMF3", "JulieW03", "Ana_Banana10", "Kroloc", 
+    "DanDareDevil", "MissyMae99", "snipersnoopy88", "tanzzers", "SRKurusaki", 
+    "M16FLAME", "Lukestar001", "seanyving", "frognoch", "dark_pigh", 
+    "quiour", "harelm", "XKaban407", "Psyclones8", "NickJ2006", 
+    "rosieroserose", "xXWendyWooPooXx", "dylanhelm77", "fdoni2002", "Jesseunicum", 
+    "Sparten1115", "Joshslayer10", "cholo7215", "maxdreher101", "mstrbuilder", 
+    "tlc2mlc", "CreeperJake42", "brundbo", "Skeleton_Head200", "Mr_Fanciful", 
+    "bast116", "Facucapo777", "Jutterstrom", "rufflesdoslokos", "Allecool03", 
+    "Gagglehaggle", "Gsal", "25weirdo25", "dashiecraft13", "cavebuilder57", 
+    "iantygo222", "dyondier", "riquebranco", "AlecioBoss", "jeremydo", 
+    "PVPLuuk", "_Skylios_", "thehuntsmen", "eusouboss", "xXFrancescaPvPXx", 
+    "ballisticbo", "arthur148148", "Freakface109", "vegardanders", "11elle11", 
+    "Shoshthegirl", "MagicSlaysYou", "nija20", "doggiedude", "Doodyfred", 
+    "matthewthgreat", "LuffyDaBomb", "skyguy001rim", "Birgers", "Lucas867", 
+    "Troublesome_Thu", "ZverMao", "DafnePegazo", "pokemonman2005", "Jov_", 
+    "xTheMasterGamex", "BaccaAmerican", "BamDieCake", "KeksMacht", "PezChu", 
+    "DanteZminecraft", "Bernat4", "sayarulez", "intelatominside", "kobeeanthony", 
+    "hazelhoeve", "Raarrh", "mariusreus", "tjenka2", "asavage1612", 
+    "Keedog09", "theepiccrafter42", "skythekidrsnate", "LucasLeandro_YT", 
+    "primoskating", "kebiga", "jsmoove21", "daycreeper1000", "Builder897", 
+    "SugarCookiMaster", "Kosta_HD", "FlyingKiyan", "AngryGrass123", 
+    "MrAlvin2005"
 ];
 
 const eatingReplies = ["pizza", "top ramen chicken lol", "chipotle", "water lmao"];
@@ -153,7 +195,7 @@ const $chatInput = $("#chatInput");
 let previousSpeaker = null;
 let lastSpecialInteractionTime = 0;
 
-// Generate chat message HTML with proper alignment and highlighting
+// Generate chat message HTML with alignment and highlighting
 function generateMessage(username, message, userColor, isSelf = false) {
     const badge = isSelf
         ? `<img class="badge" src="https://static-cdn.jtvnw.net/badges/v1/5527c58c-fb7d-422d-b71b-f309dcb85cc1/2" />`
@@ -179,8 +221,8 @@ function highlightName(message, name) {
 
 // Add a new message to the chat
 function addMessage(username, message, isSelf = false) {
-    const userColor = isSelf
-        ? 'hsl(30, 100%, 70%)'
+    const userColor = username === "luh_neeks" 
+        ? "#ff4d4d" 
         : `hsl(${Math.floor(Math.random() * 360)}, 70%, 50%)`;
 
     const newMessage = generateMessage(username, message, userColor, isSelf);
@@ -209,21 +251,10 @@ function triggerEatingInteraction() {
     const asker = getNewSpeaker();
     addMessage(asker, "What's everyone eating?");
 
-    setTimeout(() => {
-        addMessage(getNewSpeaker(), eatingReplies[0]);
-    }, Math.random() * (3000 - 2000) + 2000);
-
-    setTimeout(() => {
-        addMessage(getNewSpeaker(), eatingReplies[1]);
-    }, Math.random() * (2000 - 1000) + 1000 + 3000);
-
-    setTimeout(() => {
-        addMessage(getNewSpeaker(), eatingReplies[2]);
-    }, Math.random() * (500 - 300) + 300 + 5000);
-
-    setTimeout(() => {
-        addMessage(getNewSpeaker(), eatingReplies[3]);
-    }, Math.random() * (2000 - 1000) + 1000 + 5500);
+    setTimeout(() => addMessage(getNewSpeaker(), eatingReplies[0]), 2000);
+    setTimeout(() => addMessage(getNewSpeaker(), eatingReplies[1]), 3000);
+    setTimeout(() => addMessage(getNewSpeaker(), eatingReplies[2]), 4000);
+    setTimeout(() => addMessage(getNewSpeaker(), eatingReplies[3]), 5000);
 
     lastSpecialInteractionTime = Date.now();
 }
@@ -236,7 +267,7 @@ function simulateChat() {
         const currentTime = Date.now();
         const timeSinceLastSpecial = currentTime - lastSpecialInteractionTime;
 
-        if (Math.random() < 0.8 && timeSinceLastSpecial > 45000) {
+        if (Math.random() < 0.05 && timeSinceLastSpecial > 45000) {
             triggerEatingInteraction();
         } else {
             const user = getNewSpeaker();
@@ -251,12 +282,12 @@ function simulateChat() {
 function getRandomDelay() {
     const delayType = Math.random();
 
-    if (delayType < 0.3) {
-        return Math.random() * (500 - 100) + 100; // 100-500ms
-    } else if (delayType < 0.6) {
-        return Math.random() * (8000 - 3000) + 3000; // 3-8s
+    if (delayType < 0.4) {
+        return Math.random() * (700 - 300) + 300; // 300-700ms (fast messages)
+    } else if (delayType < 0.7) {
+        return Math.random() * (3000 - 1500) + 1500; // 1.5-3s (moderate messages)
     } else {
-        return Math.random() * (15000 - 10000) + 10000; // 10-15s
+        return Math.random() * (8000 - 5000) + 5000; // 5-8s (slower messages)
     }
 }
 
