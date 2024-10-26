@@ -42,6 +42,7 @@ const messages = [
     "outfit check",
     "u a lil goblin luh_neeks",
     "fit check",
+    "fit check luh_neeks",
     "lowkey I need to shower lol 💀",
     "yoooo what game y'all grinding lately?",
     "what car does he drive?",
@@ -143,15 +144,15 @@ const messages = [
     "go talk to that person"
 ];
 
-
 const MAX_MESSAGES = 10;
 const $chat = $("#chat");
 const $chatInput = $("#chatInput");
 let previousSpeaker = null;
 let lastSpecialInteractionTime = 0;
 
+// Generate chat message HTML with proper alignment and highlighting
 function generateMessage(username, message, userColor, isSelf = false) {
-    const badge = isSelf 
+    const badge = isSelf
         ? `<img class="badge" src="https://static-cdn.jtvnw.net/badges/v1/5527c58c-fb7d-422d-b71b-f309dcb85cc1/2" />`
         : '';
 
@@ -159,18 +160,21 @@ function generateMessage(username, message, userColor, isSelf = false) {
 
     return `
         <div class="chat-message">
-            <span class="userLine">
-                ${badge}<span class="username" style="color: ${userColor};">${username}:</span>
-            </span>
-            <span class="message">${highlightedMessage}</span>
+            ${badge}
+            <div class="message-wrapper">
+                <span class="username" style="color: ${userColor};">${username}:</span>
+                <span class="message">${highlightedMessage}</span>
+            </div>
         </div>`;
 }
 
+// Highlight the specified username in the message
 function highlightName(message, name) {
     const regex = new RegExp(`\\b(${name})\\b`, "gi");
     return message.replace(regex, `<span class="highlight">$1</span>`);
 }
 
+// Add a new message to the chat
 function addMessage(username, message, isSelf = false) {
     const userColor = isSelf
         ? 'hsl(30, 100%, 70%)'
@@ -187,6 +191,73 @@ function addMessage(username, message, isSelf = false) {
     }
 }
 
+// Ensure the next speaker is not the same as the previous one
+function getNewSpeaker() {
+    let newSpeaker;
+    do {
+        newSpeaker = usernames[Math.floor(Math.random() * usernames.length)];
+    } while (newSpeaker === previousSpeaker);
+    previousSpeaker = newSpeaker;
+    return newSpeaker;
+}
+
+// Trigger the special eating interaction
+function triggerEatingInteraction() {
+    const asker = getNewSpeaker();
+    addMessage(asker, "What's everyone eating?");
+
+    setTimeout(() => {
+        addMessage(getNewSpeaker(), eatingReplies[0]);
+    }, Math.random() * (3000 - 2000) + 2000);
+
+    setTimeout(() => {
+        addMessage(getNewSpeaker(), eatingReplies[1]);
+    }, Math.random() * (2000 - 1000) + 1000 + 3000);
+
+    setTimeout(() => {
+        addMessage(getNewSpeaker(), eatingReplies[2]);
+    }, Math.random() * (500 - 300) + 300 + 5000);
+
+    setTimeout(() => {
+        addMessage(getNewSpeaker(), eatingReplies[3]);
+    }, Math.random() * (2000 - 1000) + 1000 + 5500);
+
+    lastSpecialInteractionTime = Date.now();
+}
+
+// Simulate chat messages with random delays
+function simulateChat() {
+    const randomDelay = getRandomDelay();
+
+    setTimeout(() => {
+        const currentTime = Date.now();
+        const timeSinceLastSpecial = currentTime - lastSpecialInteractionTime;
+
+        if (Math.random() < 0.8 && timeSinceLastSpecial > 45000) {
+            triggerEatingInteraction();
+        } else {
+            const user = getNewSpeaker();
+            const msg = messages[Math.floor(Math.random() * messages.length)];
+            addMessage(user, msg);
+        }
+        simulateChat(); // Continue the simulation
+    }, randomDelay);
+}
+
+// Get a random delay for chat messages
+function getRandomDelay() {
+    const delayType = Math.random();
+
+    if (delayType < 0.3) {
+        return Math.random() * (500 - 100) + 100; // 100-500ms
+    } else if (delayType < 0.6) {
+        return Math.random() * (8000 - 3000) + 3000; // 3-8s
+    } else {
+        return Math.random() * (15000 - 10000) + 10000; // 10-15s
+    }
+}
+
+// Send a message on button click or enter key press
 $("#sendButton").on('click touchstart', () => {
     const message = $chatInput.val().trim();
     if (message) addMessage("luh_neeks", message, true);
@@ -197,13 +268,7 @@ $chatInput.on('keypress', (e) => {
     if (e.which === 13) $("#sendButton").click();
 });
 
-$(window).on('load', () => simulateChat());
-
-function simulateChat() {
-    setTimeout(() => {
-        const user = usernames[Math.floor(Math.random() * usernames.length)];
-        const msg = messages[Math.floor(Math.random() * messages.length)];
-        addMessage(user, msg);
-        simulateChat();
-    }, Math.random() * (3000 - 1000) + 1000);
-}
+// Start the chat simulation on window load
+$(window).on('load', () => {
+    simulateChat();
+});

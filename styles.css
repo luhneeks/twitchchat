@@ -42,35 +42,44 @@
     gap: 8px;
 }
 
-/* Badge Styling (Square Icon, Close Alignment) */
+/* Chat Message Layout */
+.chat-message {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 5px;
+    gap: 6px; /* Space between badge and message content */
+}
+
+/* Badge Styling */
 .badge {
     width: 18px;
     height: 18px;
     object-fit: contain;
-    margin-right: 2px;
-    vertical-align: middle;
-    display: inline-block;
     border-radius: 0;
-    padding: 0;
+    margin-right: 4px;
 }
 
-/* Username and Message Layout */
-.chat-message {
+/* Username and Message Wrapper */
+.message-wrapper {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
-    margin-bottom: 5px;
 }
 
+/* Username Styling */
 .username {
     font-weight: bold;
-    margin-right: 4px;
+    margin-right: 6px;
     white-space: nowrap;
+    color: #f39c12;
 }
 
+/* Message Styling */
 .message {
     display: inline;
     color: white;
+    word-wrap: break-word; /* Ensure long words wrap properly */
+    max-width: 100%; /* Ensure it doesn't overflow the container */
 }
 
 /* Highlighted Username Styling */
@@ -78,7 +87,6 @@
     color: #ff4d4d;
     font-weight: bold;
     background-color: transparent;
-    display: inline;
 }
 
 /* Chat Input Wrapper */

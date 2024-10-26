@@ -34,6 +34,7 @@ const messages = [
     "outfit check",
     "u a lil goblin luh_neeks",
     "fit check",
+    "fit check luh_neeks",
     "lowkey I need to shower lol 💀",
     "yoooo what game y'all grinding lately?",
     "what car does he drive?",
