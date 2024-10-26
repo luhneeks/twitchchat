@@ -42,19 +42,44 @@
     gap: 8px;
 }
 
-/* Badge Styling (Square Icon) */
 /* Badge Styling (Square Icon, Close Alignment) */
 .badge {
     width: 18px;
     height: 18px;
-    object-fit: contain; /* Ensures proper scaling */
-    margin-right: 2px; /* Closer alignment to username */
+    object-fit: contain;
+    margin-right: 2px;
     vertical-align: middle;
     display: inline-block;
-    border-radius: 0; /* Ensure square shape */
-    padding: 0; /* Remove any extra space around the badge */
+    border-radius: 0;
+    padding: 0;
 }
 
+/* Username and Message Layout */
+.chat-message {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    margin-bottom: 5px;
+}
+
+.username {
+    font-weight: bold;
+    margin-right: 4px;
+    white-space: nowrap;
+}
+
+.message {
+    display: inline;
+    color: white;
+}
+
+/* Highlighted Username Styling */
+.highlight {
+    color: #ff4d4d;
+    font-weight: bold;
+    background-color: transparent;
+    display: inline;
+}
 
 /* Chat Input Wrapper */
 #chatInputWrapper {
@@ -91,15 +116,6 @@
 
 #sendButton:hover {
     background-color: #4b318d;
-}
-
-/* Username and Message Line Styling */
-.userLine {
-    display: inline-flex;
-    align-items: center;
-    font-weight: bold;
-    gap: 4px;
-    white-space: nowrap; /* Prevent wrapping of usernames */
 }
 
 /* Responsive Design */
