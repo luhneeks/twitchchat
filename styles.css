@@ -8,7 +8,7 @@
 
 /* Wrapper Styling */
 #chatWrapper {
-    max-width: 500px;
+    max-width: clamp(400px, 50vw, 500px);
     width: 100%;
     margin: 0 auto;
     border: 1px solid #ccc;
@@ -32,7 +32,6 @@
     position: relative;
 }
 
-/* Red Dot and Number */
 #numberContainer {
     position: absolute;
     top: 10px;
@@ -67,30 +66,45 @@
     padding: 10px;
     display: flex;
     flex-direction: column;
+    gap: 8px;
     background-color: #1e1e1e;
     overflow-y: auto;
-    gap: 8px;
 }
 
 .chat-message {
     display: flex;
     align-items: flex-start;
     gap: 6px;
-    margin-bottom: 8px;
 }
 
+/* Username Styling */
+.username {
+    font-weight: 600;  /* Adjusted for thicker font */
+    color: hsl(210, 70%, 75%);
+}
+
+.username-luh-neeks {
+    font-weight: 700;  /* Bolder font for luh_neeks */
+    color: #ff4d4d;
+}
+
+/* Badge Styling */
 .badge {
     width: 18px;
     height: 18px;
-    object-fit: contain;
 }
 
+/* Deleted Message Styling */
 .deleted-message {
-    color: grey;
-    font-style: italic;
+    opacity: 0;
+    transition: opacity 0.5s;
 }
 
-/* Chat Input */
+.deleted-message.show {
+    opacity: 1;
+}
+
+/* Input Wrapper */
 #chatInputWrapper {
     display: flex;
     align-items: center;
@@ -103,10 +117,15 @@
     flex: 1;
     padding: 8px;
     font-size: 0.9rem;
+    font-weight: 500; /* Slightly thicker for readability */
     border: 1px solid #444;
     border-radius: 6px;
     background-color: #1e1e1e;
     color: white;
+}
+
+#chatInput:focus {
+    outline: 2px solid #6441a5;
 }
 
 #sendButton {
