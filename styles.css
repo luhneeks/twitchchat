@@ -74,9 +74,8 @@
     display: flex;
     align-items: flex-start;
     margin-bottom: 8px;
-    gap: 6px;
     max-width: 100%;
-    flex-wrap: nowrap;
+    gap: 6px;
 }
 
 /* Badge Styling */
@@ -90,37 +89,30 @@
 
 /* Username and Message Wrapper */
 .message-wrapper {
-    display: inline-flex;
-    align-items: baseline;
+    display: flex;
+    flex-direction: row;
     flex-wrap: wrap;
     max-width: 100%;
+    align-items: flex-start;
 }
 
 /* Username Styling */
 .username {
     font-weight: bold;
-    margin-right: 6px;
     white-space: nowrap;
+    margin-right: 6px;
     color: #f39c12;
-}
-
-/* Ensure broadcaster's username is red */
-.username.broadcaster {
-    color: #ff4d4d;
+    flex-shrink: 0;
 }
 
 /* Message Styling */
 .message {
     flex: 1;
-    word-wrap: break-word;
     white-space: normal;
+    word-break: break-word;
     color: white;
-    max-width: calc(100% - 50px);
-}
-
-/* Handle Wrapped Lines Properly */
-.message-wrapper .message + .message {
-    margin-left: calc(8px + 1em);
+    padding-left: 6px;
+    text-indent: -6px; /* Align wrapped lines under the username */
 }
 
 /* Highlighted Username Styling */
