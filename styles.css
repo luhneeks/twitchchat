@@ -6,182 +6,132 @@
     font-family: 'Arial', sans-serif;
 }
 
-/* Wrapper Styling */
-#chatWrapper {
-    max-width: 500px;
-    width: 100%;
-    margin: 0 auto;
-    border: 1px solid #ccc;
-    border-radius: 12px;
+/* Main Wrapper Styling */
+#mainWrapper {
+    width: 340px;
+    height: 100vh;
+    background-color: #212325;
     display: flex;
     flex-direction: column;
-    background-color: #1e1e1e;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    justify-content: space-between;
     overflow: hidden;
-    height: 100vh;
 }
 
-/* Header Styling */
+/* Chat Header */
 #chatHeader {
-    padding: 15px;
+    height: 50px;
     background-color: #6441a5;
-    color: white;
-    text-align: center;
-    font-weight: bold;
-    font-size: 1.5rem;
-    position: relative;
-}
-
-/* Red Number Container */
-#numberContainer {
-    position: absolute;
-    top: 10px;
-    right: 15px;
     display: flex;
     align-items: center;
-    gap: 4px;
+    justify-content: center;
+    color: white;
+    font-weight: bold;
 }
 
-/* Red Dot Styling */
-.red-dot {
-    width: 8px;
-    height: 8px;
-    background-color: red;
-    border-radius: 50%;
-}
-
-/* Red Number Styling */
-#dynamicNumber {
-    font-size: 1.2rem;
-    font-weight: 800;
-    color: red;
-    font-family: 'Arial', sans-serif;
+/* Chat Wrapper */
+#chatWrapper {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
 }
 
 /* Chat Messages Container */
 #chat {
     flex: 1;
     padding: 10px;
-    display: flex;
-    flex-direction: column;
     background-color: #1e1e1e;
     overflow-y: auto;
+    display: flex;
+    flex-direction: column-reverse;
     gap: 8px;
 }
 
-/* Chat Message Layout */
-.chat-message {
+/* Chat Message */
+.chatMessage {
     display: flex;
     align-items: flex-start;
-    margin-bottom: 8px;
-    max-width: 100%;
     gap: 6px;
 }
 
-/* Badge Styling */
-.badge {
-    width: 18px;
-    height: 18px;
-    object-fit: contain;
-    border-radius: 0;
-    margin-right: 4px;
-}
-
-/* Username and Message Wrapper */
-.message-wrapper {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    max-width: 100%;
-    align-items: flex-start;
+.chatMessage span {
+    white-space: pre-wrap;
+    word-break: break-word;
 }
 
 /* Username Styling */
 .username {
     font-weight: bold;
-    white-space: nowrap;
-    margin-right: 6px;
     color: #f39c12;
-    flex-shrink: 0;
+    margin-right: 6px;
 }
 
-/* Message Styling */
-.message {
-    flex: 1;
-    white-space: normal;
-    word-break: break-word;
-    color: white;
-    padding-left: 6px;
-    text-indent: -6px; /* Align wrapped lines under the username */
-}
-
-/* Highlighted Username Styling */
-.highlight {
-    color: #ff4d4d;
-    font-weight: bold;
-    background-color: transparent;
-}
-
-/* Chat Input Wrapper */
-#chatInputWrapper {
+/* Footer / Chat Input */
+#chatFooter {
+    height: 60px;
+    background-color: #2b2b2b;
     display: flex;
     align-items: center;
     padding: 8px;
-    background-color: #2b2b2b;
-    gap: 6px;
+    gap: 8px;
+    flex-shrink: 0;
 }
 
-/* Chat Input Styling */
-#chatInput {
+/* Chat Input Field */
+#textfield {
     flex: 1;
     padding: 8px;
-    font-size: 0.9rem;
     border: 1px solid #444;
     border-radius: 6px;
-    outline: none;
     background-color: #1e1e1e;
     color: white;
 }
 
-/* Send Button Styling */
-#sendButton {
+/* Send Button */
+#chatButton {
     padding: 8px 12px;
     background-color: #6441a5;
     color: white;
     border: none;
     border-radius: 6px;
-    font-size: 0.9rem;
     cursor: pointer;
-    transition: background-color 0.3s;
+    flex-shrink: 0;
 }
 
-#sendButton:hover {
+#chatButton:hover {
     background-color: #4b318d;
 }
 
 /* Responsive Design */
 @media (max-width: 600px) {
-    #chatWrapper {
-        border-radius: 0;
-        height: 100%;
+    #mainWrapper {
+        width: 100%;
+        height: 100vh;
     }
 
     #chatHeader {
-        font-size: 1.25rem;
-        padding: 10px;
+        font-size: 1rem;
     }
 
-    #chatInput {
-        font-size: 0.8rem;
+    #chatFooter {
+        flex-direction: column; /* Stack input and button vertically */
+        height: auto;
+        padding: 4px;
     }
 
-    #sendButton {
-        padding: 6px 10px;
-        font-size: 0.8rem;
+    #textfield {
+        width: 100%;
+        margin-bottom: 4px;
+        font-size: 0.9rem;
     }
 
-    #chatInputWrapper {
-        flex-direction: column;
-        gap: 4px;
+    #chatButton {
+        width: 100%;
+        padding: 8px;
+        font-size: 0.9rem;
+    }
+
+    #chat {
+        padding: 6px; /* Adjust padding for mobile */
     }
 }
