@@ -32,7 +32,7 @@
     position: relative;
 }
 
-/* Red Number Container */
+/* Red Dot and Number */
 #numberContainer {
     position: absolute;
     top: 10px;
@@ -42,23 +42,26 @@
     gap: 4px;
 }
 
-/* Red Dot Styling */
 .red-dot {
     width: 8px;
     height: 8px;
     background-color: red;
     border-radius: 50%;
+    animation: blink 1s infinite;
 }
 
-/* Red Number Styling */
+@keyframes blink {
+    0%, 50% { opacity: 1; }
+    51%, 100% { opacity: 0; }
+}
+
 #dynamicNumber {
     font-size: 1.2rem;
     font-weight: 800;
     color: red;
-    font-family: 'Arial', sans-serif;
 }
 
-/* Chat Messages Container */
+/* Chat Styles */
 #chat {
     flex: 1;
     padding: 10px;
@@ -69,68 +72,25 @@
     gap: 8px;
 }
 
-/* Chat Message Layout */
 .chat-message {
     display: flex;
     align-items: flex-start;
-    margin-bottom: 8px;
     gap: 6px;
-    max-width: 100%;
-    flex-wrap: nowrap;
+    margin-bottom: 8px;
 }
 
-/* Badge Styling */
 .badge {
     width: 18px;
     height: 18px;
     object-fit: contain;
-    border-radius: 0;
-    margin-right: 4px;
 }
 
-/* Username and Message Wrapper */
-.message-wrapper {
-    display: inline-flex;
-    align-items: baseline;
-    flex-wrap: wrap;
-    max-width: 100%;
+.deleted-message {
+    color: grey;
+    font-style: italic;
 }
 
-/* Username Styling */
-.username {
-    font-weight: bold;
-    margin-right: 6px;
-    white-space: nowrap;
-    color: #f39c12;
-}
-
-/* Ensure broadcaster's username is red */
-.username.broadcaster {
-    color: #ff4d4d;
-}
-
-/* Message Styling */
-.message {
-    flex: 1;
-    word-wrap: break-word;
-    white-space: normal;
-    color: white;
-    max-width: calc(100% - 50px);
-}
-
-/* Handle Wrapped Lines Properly */
-.message-wrapper .message + .message {
-    margin-left: calc(8px + 1em);
-}
-
-/* Highlighted Username Styling */
-.highlight {
-    color: #ff4d4d;
-    font-weight: bold;
-    background-color: transparent;
-}
-
-/* Chat Input Wrapper */
+/* Chat Input */
 #chatInputWrapper {
     display: flex;
     align-items: center;
@@ -139,57 +99,26 @@
     gap: 6px;
 }
 
-/* Chat Input Styling */
 #chatInput {
     flex: 1;
     padding: 8px;
     font-size: 0.9rem;
     border: 1px solid #444;
     border-radius: 6px;
-    outline: none;
     background-color: #1e1e1e;
     color: white;
 }
 
-/* Send Button Styling */
 #sendButton {
     padding: 8px 12px;
     background-color: #6441a5;
     color: white;
     border: none;
     border-radius: 6px;
-    font-size: 0.9rem;
     cursor: pointer;
     transition: background-color 0.3s;
 }
 
 #sendButton:hover {
     background-color: #4b318d;
-}
-
-/* Responsive Design */
-@media (max-width: 600px) {
-    #chatWrapper {
-        border-radius: 0;
-        height: 100%;
-    }
-
-    #chatHeader {
-        font-size: 1.25rem;
-        padding: 10px;
-    }
-
-    #chatInput {
-        font-size: 0.8rem;
-    }
-
-    #sendButton {
-        padding: 6px 10px;
-        font-size: 0.8rem;
-    }
-
-    #chatInputWrapper {
-        flex-direction: column;
-        gap: 4px;
-    }
 }
